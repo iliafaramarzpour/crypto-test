@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
 
@@ -5,6 +7,7 @@ const App = () => {
   const [prices, setPrices] = useState({});
 
   useEffect(() => {
+    fetch('/api/websocket')
     const socket = io('http://localhost:4000/');
 
     socket.on('priceUpdate', data => {
